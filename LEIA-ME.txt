@@ -1,0 +1,27 @@
+# GSBeer — pacote PWA (instalável)
+
+Este pacote cria uma **camada instalável** com nome e ícone próprios para abrir o GSBeer. Ele não substitui nem altera o projeto atual do Google Apps Script ou a planilha.
+
+## O que contém
+- `index.html`: abre a URL publicada do GSBeer dentro de uma janela em tela cheia.
+- `manifest.webmanifest`: nome, cores e configuração de instalação.
+- `service-worker.js`: mantém o invólucro simples; não guarda nem intercepta os dados da comanda.
+- `icons/`: ícones de 192×192 e 512×512.
+
+## Importante
+- O aplicativo **precisa de internet** e não funciona offline.
+- O endereço publicado do Apps Script foi configurado no `index.html`:
+  `https://script.google.com/macros/s/AKfycbxU_Ixzyp9wp60O-jGVsAgV_f024mTlF4cZE3wa__TXi8XcFJywLE95Z1AVgz9JUKssPA/exec`
+- Como o sistema usa `google.script.run`, a abertura dentro de um iframe precisa ser testada no celular. Se autenticação ou algum recurso for bloqueado dentro do quadro, use o botão pequeno **Abrir diretamente** no canto superior direito. Não altere o código da comanda antes de testar.
+- Para a instalação PWA, estes arquivos precisam estar hospedados em um endereço HTTPS público, por exemplo, GitHub Pages. Abrir o `index.html` localmente pelo computador não permite instalar como PWA.
+
+## Publicar no GitHub Pages (resumo)
+1. Entre no GitHub e crie um repositório público, por exemplo `gsbeer-app`.
+2. Envie todos os arquivos desta pasta mantendo a estrutura, inclusive a pasta `icons`.
+3. No repositório, abra **Settings → Pages**.
+4. Em **Build and deployment**, selecione **Deploy from a branch**, branch `main`, pasta `/(root)`, e salve.
+5. Aguarde o endereço HTTPS publicado. Abra esse endereço no Chrome do Android e escolha **Instalar app** ou **Adicionar à tela inicial**.
+6. Teste login, mesas, pedidos, pagamentos e relatórios. Se algo não funcionar dentro do quadro, use a abertura direta e me informe o comportamento observado para ajustarmos sem mexer nas funções do sistema.
+
+## Segurança
+Não compartilhe publicamente o projeto de Apps Script ou a planilha. O pacote só contém a URL já publicada do sistema.

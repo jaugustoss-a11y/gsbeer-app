@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#009B4D">
+  <meta name="description" content="GSBeer — Sistema de Comandas">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <title>GSBeer — Comanda</title>
+  <style>
+    :root { color-scheme: dark; --green: #009B4D; --gold: #FFCC00; --cream: #FAF5E9; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #111814; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    body { padding: 0; }
+    #app { width: 100%; height: 100%; height: 100dvh; position: relative; }
+    #gsbeer-frame { display: block; border: 0; width: 100%; height: 100%; background: #fff; }
+    #fallback { display: none; position: absolute; inset: 0; z-index: 2; padding: 28px; background: #111814; color: var(--cream); align-items: center; justify-content: center; text-align: center; }
+    #fallback .panel { max-width: 440px; }
+    #fallback h1 { margin: 0 0 12px; color: var(--gold); font-size: 1.7rem; }
+    #fallback p { line-height: 1.55; }
+    .link { display: inline-block; margin-top: 14px; padding: 13px 18px; border-radius: 12px; color: #111814; background: var(--gold); text-decoration: none; font-weight: 800; }
+    .small { color: #c6d2ca; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main id="app" aria-label="GSBeer">
+    <iframe id="gsbeer-frame" title="Sistema de Comandas GSBeer"
+      src="https://script.google.com/macros/s/AKfycbxU_Ixzyp9wp60O-jGVsAgV_f024mTlF4cZE3wa__TXi8XcFJywLE95Z1AVgz9JUKssPA/exec"
+      allow="clipboard-read; clipboard-write"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+    <div id="fallback">
+      <a class="link" href="https://script.google.com/macros/s/AKfycbxU_Ixzyp9wp60O-jGVsAgV_f024mTlF4cZE3wa__TXi8XcFJywLE95Z1AVgz9JUKssPA/exec" target="_blank" rel="noopener">Abrir diretamente ↗</a>
+    </div>
+  </main>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
